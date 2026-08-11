@@ -305,6 +305,24 @@ export default function TerminalPage({
                 <SettingRow
                     className={DIVIDED}
                     align="center"
+                    title={t('settings.terminal.smoothScroll')}
+                    description={t('settings.terminal.smoothScrollDesc')}
+                    control={
+                        <Slider
+                            ariaLabel={t('settings.terminal.smoothScrollAria')}
+                            value={terminalSettings.smoothScrollDuration}
+                            {...LIMITS.smoothScrollDuration}
+                            onChange={(smoothScrollDuration) => set({ smoothScrollDuration })}
+                            format={(value) => (value === 0
+                                ? t('common.off')
+                                : t('settings.terminal.smoothScrollMs', { value }))}
+                        />
+                    }
+                />
+
+                <SettingRow
+                    className={DIVIDED}
+                    align="center"
                     title={t('settings.terminal.links')}
                     description={t('settings.terminal.linksDesc', { modifier: MODIFIER_KEY })}
                     control={
